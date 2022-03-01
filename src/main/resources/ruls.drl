@@ -1,0 +1,39 @@
+import com.example.demo.*
+global TestService testService;
+
+dialect  "java"
+
+rule "aaa"
+	salience 10
+	no-loop true
+	enabled true
+    when
+        QueryParam(test == "aaa")
+    then
+     System.out.println("aaa");
+end
+
+
+rule "bbb"
+	salience 8
+	no-loop true
+	enabled true
+    when
+        queryParam :  QueryParam(test == "bbb")
+        resultParam : RuleResult()
+    then
+        System.out.println("bbb + " + queryParam.getTest());
+        resultParam.setResult(true);
+end
+
+
+rule "ccc"
+	salience 11
+	no-loop true
+	enabled true
+    when
+        queryParam :  QueryParam(test == "ccc")
+    then
+        testService.testDrools();
+end
+
