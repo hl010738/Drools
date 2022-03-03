@@ -10,7 +10,7 @@ rule "aaa"
     when
         QueryParam(test == "aaa")
     then
-     System.out.println("aaa");
+        System.out.println("aaa");
 end
 
 
